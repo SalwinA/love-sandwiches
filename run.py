@@ -13,16 +13,25 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('love_sandwiches')
 
-# sales = SHEET.worksheet('sales')
-# data = sales.get_all_values()
-# print(data)
 
 def get_sales_data():
-    """ Request User Data """
+    """ Request User Data"""
     print('Please enter the sales data from the last market.')
     print('Enter the numbers as per this example - 10,20,30,40,50,60\n')
-
     data_str = input('Please enter the numbers:')
-    print(f'The data provided are: {data_str}')
+    sales_data = data_str.split(',')
+    validate_data(sales_data)
+
+
+def validate_data(values):
+    """Try & Except to validate user inputs
+    are integers and exactly 6 numbers"""
+    try:
+        if len(values) != 6:
+            raise ValueError(
+                f'Required 6 values. You provided {len(values)}.')
+    except ValueError as e:
+        print(f'Invalid data: {e}. Please try again!!\n')
+
 
 get_sales_data()
