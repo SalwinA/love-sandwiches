@@ -27,6 +27,7 @@ def validate_data(values):
     """Try & Except to validate user inputs
     are integers and exactly 6 numbers"""
     try:
+        [int(value) for value in values]
         if len(values) != 6:
             raise ValueError(
                 f'Required 6 values. You provided {len(values)}.')
