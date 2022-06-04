@@ -20,7 +20,7 @@ def get_sales_data():
     while True:
         print('Please enter the sales data from the last market.')
         print('Enter the numbers as per this example - 10,20,30,40,50,60\n')
-        data_str = input('Please enter the numbers:')
+        data_str = input('Please enter the numbers:\n')
         sales_data = data_str.split(',')
         if(validate_data(sales_data)):
             print('Data provided is valid.')
